@@ -405,6 +405,16 @@
       <button class="btn gold" onclick="submitAttend()">Continue</button>
     </div>
 
+    <!-- STEP DECLINE: Name for declining guests -->
+    <div class="step" id="step-decline">
+      <p class="step-label">One last thing</p>
+      <h2 class="step-heading">Who should we note<br/>as unable to attend?</h2>
+      <label for="declineName">Your name</label>
+      <input type="text" id="declineName" placeholder="Your full name"/>
+      <p class="error-msg" id="declineError">Please enter your name so we can note your RSVP.</p>
+      <button class="btn gold" onclick="submitDecline()">Send my RSVP</button>
+    </div>
+
     <!-- STEP 3: Guest details -->
     <div class="step" id="step-guests">
       <p class="step-label">Step 3 of 3</p>
@@ -516,12 +526,23 @@
       return;
     }
     if (attendChoice === 'no') {
-      sendToSheets({ code: currentCode, attending: 'No' });
-      setStep('step-thanks-no');
+      setStep('step-decline');
     } else {
       buildGuestDropdown();
       setStep('step-guests');
     }
+  }
+
+  function submitDecline() {
+    const name = document.getElementById('declineName').value.trim();
+    const err = document.getElementById('declineError');
+    if (!name) {
+      err.classList.add('show');
+      return;
+    }
+    err.classList.remove('show');
+    sendToSheets({ code: currentCode, attending: 'No', declineName: name });
+    setStep('step-thanks-no');
   }
 
   function buildGuestDropdown() {
