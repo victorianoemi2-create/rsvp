@@ -7,638 +7,166 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --cream:      #f5f0e8;
-  --ivory:      #faf7f2;
-  --navy:       #2d3f5e;
-  --navy-dark:  #1a2640;
-  --mauve:      #c4a0a0;
-  --mauve-dark: #8a5a5a;
-  --olive:      #6b6147;
-  --olive-dark: #4a4230;
-  --terracotta: #8b3a1e;
-  --gold:       #c9a84c;
-  --gold-light: #e8d5a0;
-  --white:      #ffffff;
-  --ink:        #1a1208;
+  --cream: #f5f0e8; --ivory: #faf7f2; --navy: #2d3f5e; --navy-dark: #1a2640;
+  --mauve: #c4a0a0; --mauve-dark: #8a5a5a; --olive: #6b6147; --olive-dark: #4a4230;
+  --terracotta: #8b3a1e; --gold: #c9a84c; --gold-light: #e8d5a0;
+  --ink: #1a1208; --ink-mid: #4a3a28;
 }
-
 html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
-body {
-  font-family: 'Jost', sans-serif;
-  font-weight: 300;
-  background: var(--cream);
-  color: var(--ink);
-  overflow-x: hidden;
-}
-
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 18px 40px;
-  background: rgba(26,18,8,0.55);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-}
-nav a {
-  font-family: 'Jost', sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  transition: color 0.2s;
-}
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 18px 48px; background: rgba(26,18,8,0.6); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,168,76,0.15); }
+.nav-logo { font-family: 'Great Vibes', cursive; font-size: 26px; color: rgba(232,213,160,0.9); text-decoration: none; }
+.nav-links { display: flex; gap: 36px; }
+nav a { font-size: 10px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
 nav a:hover { color: var(--gold-light); }
 
-/* ── SHARED ── */
-.script {
-  font-family: 'Great Vibes', cursive;
-}
-.serif {
-  font-family: 'Cormorant Garamond', serif;
-}
+/* SECTION SHARED */
+.section-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 12px; }
+.gold-rule { width: 48px; height: 1px; background: var(--gold); margin: 0 auto; opacity: 0.6; }
 
-.gold-line {
-  display: block;
-  width: 60px;
-  height: 1px;
-  background: var(--gold);
-  margin: 0 auto;
-}
+/* DETAILS */
+#details { background: var(--ivory); padding: 120px 40px 100px; text-align: center; }
+.details-title { font-family: 'Great Vibes', cursive; font-size: clamp(56px, 7vw, 88px); color: var(--ink); line-height: 1; margin-bottom: 16px; }
+.details-date { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; letter-spacing: 2px; color: var(--olive); margin-bottom: 6px; }
+.details-venue { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--ink); margin-bottom: 4px; }
+.details-address { font-size: 12px; letter-spacing: 1px; color: #999; margin-bottom: 48px; }
+.details-stack { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+.detail-block { padding: 40px 0; border-bottom: 1px solid rgba(201,168,76,0.2); text-align: center; }
+.detail-block:first-child { border-top: 1px solid rgba(201,168,76,0.2); }
+.detail-label { font-size: 16px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.detail-value { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--ink); margin-bottom: 10px; line-height: 1; }
+.detail-sub { font-size: 14px; font-weight: 300; color: #999; line-height: 1.7; }
 
-.section-tag {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-align: center;
-  margin-bottom: 12px;
-}
+/* VENUE */
+#venue { background: var(--navy); overflow: hidden; }
+.venue-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; }
+.venue-img { background: url('Rialto_theater.png') center center / cover no-repeat; }
+.venue-text { padding: 88px 72px; display: flex; flex-direction: column; justify-content: center; }
+.venue-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.venue-title { font-family: 'Great Vibes', cursive; font-size: clamp(48px, 5vw, 72px); color: #fff; line-height: 1.1; margin-bottom: 28px; }
+.venue-body { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.72); line-height: 1.95; max-width: 400px; }
+.venue-note { margin-top: 20px; font-size: 12px; letter-spacing: 0.5px; color: rgba(255,255,255,0.38); line-height: 1.7; }
 
-/* ── HERO ── */
-#hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-#hero .bg {
-  position: absolute;
-  inset: 0;
-  background: url('Header_Image.png') center center / cover no-repeat;
-}
-#hero .overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10,15,30,0.35) 0%,
-    rgba(10,15,30,0.2) 40%,
-    rgba(10,15,30,0.5) 100%
-  );
-}
-#hero .content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 20px;
-  animation: heroFade 1.4s ease both;
-}
-@keyframes heroFade {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero-invited {
-  font-family: 'Jost', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 16px;
-}
-.hero-invited::before,
-.hero-invited::after {
-  content: '——';
-  margin: 0 12px;
-  opacity: 0.5;
-}
-.hero-names {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(72px, 12vw, 140px);
-  font-weight: 300;
-  line-height: 0.9;
-  color: #fff;
-  letter-spacing: -2px;
-}
-.hero-names .amp {
-  font-style: italic;
-  font-size: 0.6em;
-  vertical-align: middle;
-  color: var(--gold-light);
-}
-.hero-wedding {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(48px, 7vw, 90px);
-  color: var(--gold-light);
-  line-height: 1.1;
-  margin-top: -8px;
-}
-.hero-btn {
-  display: inline-block;
-  margin-top: 48px;
-  padding: 14px 48px;
-  border: 1px solid rgba(255,255,255,0.7);
-  color: #fff;
-  font-family: 'Jost', sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.3s;
-  background: rgba(255,255,255,0.05);
-}
-.hero-btn:hover {
-  background: rgba(255,255,255,0.15);
-  border-color: var(--gold-light);
-  color: var(--gold-light);
-}
-
-/* ── DETAILS ── */
-#details {
-  background: var(--ivory);
-  padding: 100px 40px;
-  text-align: center;
-}
-.details-header {
-  margin-bottom: 60px;
-}
-.details-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(52px, 6vw, 80px);
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 16px;
-}
-.details-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  color: var(--olive);
-  margin-bottom: 6px;
-}
-.details-venue {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-.details-address {
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: #888;
-  margin-bottom: 40px;
-}
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  max-width: 800px;
-  margin: 0 auto;
-  border: 1px solid rgba(201,168,76,0.2);
-}
-.detail-block {
-  padding: 40px 32px;
-  background: var(--ivory);
-  border: 1px solid rgba(201,168,76,0.15);
-}
-.detail-block-label {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-.detail-block-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
-.detail-block-sub {
-  font-size: 12px;
-  font-weight: 300;
-  color: #888;
-  line-height: 1.6;
-}
-
-/* ── RIALTO ── */
-#venue {
-  background: var(--navy);
-  padding: 0;
-  overflow: hidden;
-}
-.venue-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 560px;
-}
-.venue-img {
-  background: url('Rialto_theater.png') center center / cover no-repeat;
-  min-height: 400px;
-}
-.venue-text {
-  padding: 80px 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.venue-tag {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-.venue-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(44px, 5vw, 68px);
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 24px;
-}
-.venue-body {
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.9;
-  max-width: 380px;
-}
-
-/* ── DESTINATION ── */
-#destination {
-  background: var(--mauve);
-  padding: 100px 40px;
-  position: relative;
-  overflow: hidden;
-}
-#destination::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('CoupleAccomodations.png') center center / cover no-repeat;
-  opacity: 0.18;
-}
+/* DESTINATION */
+#destination { position: relative; background: var(--mauve); padding: 110px 40px; overflow: hidden; }
+#destination::before { content: ''; position: absolute; inset: 0; background: url('CoupleAccomodations.png') center center / cover no-repeat; opacity: 0.35; }
 .destination-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
-.destination-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(52px, 6vw, 80px);
-  color: #fff;
-  text-align: center;
-  margin-bottom: 60px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.2);
-}
-.destination-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.dest-card {
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 40px 32px;
-}
-.dest-card-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 32px;
-  color: #fff;
-  margin-bottom: 16px;
-}
-.dest-card-body {
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.9;
-}
-.dest-card-body strong {
-  display: block;
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 4px;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+.destination-title { font-family: 'Great Vibes', cursive; font-size: clamp(56px, 7vw, 88px); color: #fff; text-align: center; margin-bottom: 64px; text-shadow: 0 2px 24px rgba(0,0,0,0.15); }
+.destination-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.dest-card { background: rgba(255,255,255,0.18); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.28); padding: 44px 36px; }
+.dest-card-title { font-family: 'Great Vibes', cursive; font-size: 36px; color: #fff; margin-bottom: 18px; }
+.dest-card-body { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.88); line-height: 1.95; }
+.dest-card-body strong { display: block; font-weight: 500; color: #fff; margin-bottom: 4px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-top: 12px; }
 
-/* ── RSVP ── */
-#rsvp {
-  position: relative;
-  min-height: 500px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-#rsvp .bg {
-  position: absolute;
-  inset: 0;
-  background: url('RSVP_Image.png') center center / cover no-repeat;
-}
-#rsvp .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(245,240,232,0.88);
-}
-.rsvp-inner {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  text-align: center;
-  padding: 100px 40px;
-}
-.rsvp-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(80px, 12vw, 140px);
-  color: var(--ink);
-  line-height: 0.9;
-  margin-bottom: 20px;
-}
-.rsvp-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-style: italic;
-  color: var(--olive);
-  margin-bottom: 8px;
-}
-.rsvp-deadline {
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #888;
-  margin-bottom: 40px;
-}
-.rsvp-btn {
-  display: inline-block;
-  padding: 16px 56px;
-  background: var(--ink);
-  color: var(--cream);
-  font-family: 'Jost', sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.2s;
-}
+/* RSVP */
+#rsvp { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; }
+#rsvp .rsvp-bg { position: absolute; inset: 0; background: url('RSVP_Image.png') center center / cover no-repeat; }
+#rsvp .rsvp-overlay { position: absolute; inset: 0; background: rgba(245,240,232,0.9); }
+.rsvp-inner { position: relative; z-index: 2; width: 100%; text-align: center; padding: 110px 40px; }
+.rsvp-title { font-family: 'Great Vibes', cursive; font-size: clamp(96px, 14vw, 160px); color: var(--ink); line-height: 0.85; margin-bottom: 24px; }
+.rsvp-sub { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--olive); margin-bottom: 8px; }
+.rsvp-deadline { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 44px; }
+.rsvp-btn { display: inline-block; padding: 16px 60px; background: var(--ink); color: var(--cream); font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; text-decoration: none; transition: background 0.25s; }
 .rsvp-btn:hover { background: var(--olive-dark); }
 
-/* ── Q&A ── */
-#qa {
-  position: relative;
-  overflow: hidden;
-  background: var(--olive-dark);
-}
-#qa .bg {
-  position: absolute;
-  inset: 0;
-  background: url('QA_Image.png') left center / cover no-repeat;
-  opacity: 0.25;
-}
-.qa-inner {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  min-height: 600px;
-}
-.qa-left {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 40px;
-  border-right: 1px solid rgba(201,168,76,0.2);
-}
-.qa-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(56px, 8vw, 96px);
-  font-weight: 300;
-  color: #fff;
-  letter-spacing: -2px;
-  line-height: 1;
-}
-.qa-heading span {
-  display: block;
-  font-style: italic;
-  color: var(--gold-light);
-}
-.qa-right {
-  padding: 80px 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0;
-}
-.qa-item {
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  padding: 28px 0;
-}
-.qa-item:first-child { border-top: 1px solid rgba(201,168,76,0.2); }
-.qa-q {
-  font-family: 'Great Vibes', cursive;
-  font-size: 26px;
-  color: var(--gold-light);
-  margin-bottom: 8px;
-}
-.qa-a {
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.7;
-  letter-spacing: 0.5px;
-}
+/* Q&A */
+#qa { position: relative; background: var(--olive-dark); overflow: hidden; }
+#qa .qa-bg { position: absolute; inset: 0; background: url('QA_Image.png') left center / cover no-repeat; opacity: 0.22; }
+.qa-inner { position: relative; z-index: 2; display: flex; flex-direction: column; min-height: auto; }
+.qa-left { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 40px 40px; border-right: none; border-bottom: 1px solid rgba(201,168,76,0.18); }
+.qa-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(64px, 9vw, 108px); font-weight: 300; color: #fff; letter-spacing: -3px; line-height: 1; text-align: center; }
+.qa-heading em { font-style: italic; color: var(--gold-light); display: block; }
+.qa-right { padding: 40px 80px 80px; display: flex; flex-direction: column; justify-content: center; max-width: 800px; margin: 0 auto; width: 100%; }
+.qa-item { border-bottom: 1px solid rgba(201,168,76,0.18); padding: 26px 0; }
+.qa-item:first-child { border-top: 1px solid rgba(201,168,76,0.18); }
+.qa-q { font-family: 'Great Vibes', cursive; font-size: 28px; color: var(--gold-light); margin-bottom: 8px; }
+.qa-a { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.75; letter-spacing: 0.3px; }
 
-/* ── FOOTER ── */
-footer {
-  position: relative;
-  overflow: hidden;
-  min-height: 480px;
-  display: flex;
-  align-items: center;
-}
-footer .bg {
-  position: absolute;
-  inset: 0;
-  background: url('Ending_Image.png') center center / cover no-repeat;
-}
-footer .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(139,58,30,0.82);
-}
-.footer-inner {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 80px 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  max-width: 1000px;
-  margin: 0 auto;
-  align-items: center;
-}
-.footer-left {}
-.footer-closing {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(36px, 5vw, 56px);
-  color: #fff;
-  line-height: 1.2;
-  margin-bottom: 24px;
-}
-.footer-tagline {
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-}
-.footer-right {}
-.footer-section-title {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 20px;
-  margin-top: 28px;
-}
-.footer-section-title:first-child { margin-top: 0; }
-.footer-address {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 4px;
-}
-.footer-address-sub {
-  font-size: 12px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.7;
-}
-.footer-contact {
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.8;
-}
-.footer-bottom {
-  background: rgba(0,0,0,0.3);
-  text-align: center;
-  padding: 16px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: rgba(255,255,255,0.35);
-  position: relative;
-  z-index: 3;
-}
+/* FOOTER */
+footer { position: relative; overflow: hidden; min-height: 500px; display: flex; flex-direction: column; }
+footer .footer-bg { position: absolute; inset: 0; background: url('Ending_Image.png') center bottom / cover no-repeat; }
+footer .footer-overlay { position: absolute; inset: 0; background: rgba(139,58,30,0.84); }
+.footer-inner { position: relative; z-index: 2; flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1000px; margin: 0 auto; width: 100%; padding: 90px 40px; align-items: center; }
+.footer-closing { font-family: 'Great Vibes', cursive; font-size: clamp(38px, 5vw, 58px); color: #fff; line-height: 1.2; margin-bottom: 20px; }
+.footer-tagline { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.footer-col-title { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; margin-top: 28px; }
+.footer-col-title:first-child { margin-top: 0; }
+.footer-addr-name { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; color: #fff; margin-bottom: 3px; }
+.footer-addr-sub { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.footer-contact { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.9; }
+.footer-bottom { position: relative; z-index: 3; text-align: center; padding: 16px 40px; background: rgba(0,0,0,0.25); font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.3); }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { gap: 20px; padding: 14px 20px; flex-wrap: wrap; }
-  nav a { font-size: 10px; letter-spacing: 2px; }
-  .details-grid { grid-template-columns: 1fr; }
-  .venue-inner { grid-template-columns: 1fr; }
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  nav { padding: 14px 24px; }
+  .nav-links { gap: 20px; }
+  nav a { font-size: 9px; letter-spacing: 2px; }
+  .details-grid, .venue-inner, .destination-grid, .qa-inner, .footer-inner { grid-template-columns: 1fr; }
   .venue-text { padding: 60px 32px; }
-  .destination-grid { grid-template-columns: 1fr; }
-  .qa-inner { grid-template-columns: 1fr; }
-  .qa-left { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.2); padding: 60px 32px; }
+  .qa-left { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.18); padding: 60px 32px; }
   .qa-right { padding: 40px 32px 60px; }
-  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-inner { gap: 40px; padding: 60px 32px; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#details">The Details</a>
-  <a href="#venue">The Venue</a>
-  <a href="#destination">The Destination</a>
-  <a href="#rsvp">RSVP</a>
-  <a href="#qa">Q&A</a>
+  <a href="index.html" class="nav-logo">D & V</a>
+  <div class="nav-links">
+    <a href="#details">The Details</a>
+    <a href="#venue">The Venue</a>
+    <a href="#destination">The Destination</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#qa">Q&A</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="bg"></div>
-  <div class="overlay"></div>
-  <div class="content">
-    <p class="hero-invited">You are cordially invited to</p>
-    <h1 class="hero-names">DEVIN <span class="amp">&</span><br/>VICTORIA'S</h1>
-    <p class="hero-wedding">Wedding</p>
-    <a href="#details" class="hero-btn">Love Begins Here</a>
-  </div>
-</section>
-
-<!-- THE DETAILS -->
+<!-- DETAILS -->
 <section id="details">
-  <div class="details-header">
-    <p class="section-tag">mark your calendar</p>
-    <h2 class="details-title">The Details</h2>
-    <p class="details-date">Friday, August 4<sup style="font-size:0.6em;">th</sup> 2028</p>
-    <p class="details-venue">Rialto Theater</p>
-    <p class="details-address">1617 N Franklin St · Tampa, FL 33602</p>
-    <span class="gold-line"></span>
-  </div>
-  <div class="details-grid">
+  <p class="section-tag">mark your calendar</p>
+  <h2 class="details-title">The Details</h2>
+  <p class="details-date">Friday, August 4<sup style="font-size:0.6em;vertical-align:super;">th</sup> 2028</p>
+  <p class="details-venue">Rialto Theater</p>
+  <p class="details-address">1617 N Franklin St &nbsp;·&nbsp; Tampa, FL 33602</p>
+  <p class="details-address" style="margin-bottom:40px;font-size:11px;">Complimentary parking available across the street in the public lot</p>
+  <div class="gold-rule" style="margin-bottom:48px;"></div>
+  <div class="details-stack">
     <div class="detail-block">
-      <p class="detail-block-label">Ceremony</p>
-      <p class="detail-block-value">4:00 PM</p>
-      <p class="detail-block-sub">Please plan to arrive<br/>15 minutes early</p>
+      <p class="detail-label">Ceremony</p>
+      <p class="detail-value">4:00 PM</p>
+      <p class="detail-sub">Please plan to arrive 15 minutes early</p>
     </div>
     <div class="detail-block">
-      <p class="detail-block-label">Reception</p>
-      <p class="detail-block-value">To Follow</p>
-      <p class="detail-block-sub">All events take place<br/>in one location</p>
+      <p class="detail-label">Reception</p>
+      <p class="detail-value">To Follow</p>
+      <p class="detail-sub">All events take place in one location.<br/>The venue is indoors and climate-controlled for your comfort.</p>
     </div>
     <div class="detail-block">
-      <p class="detail-block-label">Dress Code</p>
-      <p class="detail-block-value">Cocktail</p>
-      <p class="detail-block-sub">Semi-formal attire<br/>is requested</p>
+      <p class="detail-label">Dress Code</p>
+      <p class="detail-value">Cocktail / Semi-Formal</p>
+      <p class="detail-sub">Attire is requested</p>
     </div>
   </div>
 </section>
 
-<!-- THE VENUE -->
+<!-- VENUE -->
 <section id="venue">
   <div class="venue-inner">
     <div class="venue-img"></div>
     <div class="venue-text">
       <p class="venue-tag">Where we gather</p>
-      <h2 class="venue-title">The Rialto<br/>Theater</h2>
+      <h2 class="venue-title">The Rialto Theater</h2>
       <p class="venue-body">Our ceremony and reception will both take place at the historic Rialto Theater, a beautifully restored space rooted in Tampa's cultural past. We loved the idea of celebrating in a place with history — where stories have unfolded for generations — and beginning our own chapter in a space designed for gathering and connection.</p>
-      <p class="venue-body" style="margin-top:20px; font-size:12px; letter-spacing:1px; color:rgba(255,255,255,0.45);">The venue is indoors and climate-controlled. Complimentary parking is available across the street in the public lot.</p>
+      <p class="venue-note">The venue is indoors and climate-controlled for your comfort.<br/>Complimentary parking is available across the street in the public lot.</p>
     </div>
   </div>
 </section>
 
-<!-- THE DESTINATION -->
+<!-- DESTINATION -->
 <section id="destination">
   <div class="destination-inner">
     <h2 class="destination-title">The Destination</h2>
@@ -649,7 +177,7 @@ footer .overlay {
       </div>
       <div class="dest-card">
         <p class="dest-card-title">Accommodations</p>
-        <p class="dest-card-body">We recommend Hampton Inn &amp; Suites Tampa/Ybor City/Downtown. A room block has been reserved for our guests at a preferred rate.<br/><br/><strong>Booking Code</strong>[INSERT CODE]</p>
+        <p class="dest-card-body">We recommend Hampton Inn &amp; Suites Tampa/Ybor City/Downtown. A room block has been reserved for our guests at a preferred rate.<br/><strong>Booking Code</strong>[INSERT CODE]</p>
       </div>
       <div class="dest-card">
         <p class="dest-card-title">Things to Do</p>
@@ -661,8 +189,8 @@ footer .overlay {
 
 <!-- RSVP -->
 <section id="rsvp">
-  <div class="bg"></div>
-  <div class="overlay"></div>
+  <div class="rsvp-bg"></div>
+  <div class="rsvp-overlay"></div>
   <div class="rsvp-inner">
     <h2 class="rsvp-title">RSVP</h2>
     <p class="rsvp-sub">Kindly reply by June 1, 2028</p>
@@ -673,10 +201,10 @@ footer .overlay {
 
 <!-- Q&A -->
 <section id="qa">
-  <div class="bg"></div>
+  <div class="qa-bg"></div>
   <div class="qa-inner">
     <div class="qa-left">
-      <h2 class="qa-heading">Q<span>&</span>A</h2>
+      <h2 class="qa-heading">Q<em>&</em>A</h2>
     </div>
     <div class="qa-right">
       <div class="qa-item">
@@ -705,29 +233,18 @@ footer .overlay {
 
 <!-- FOOTER -->
 <footer>
-  <div class="bg"></div>
-  <div class="overlay"></div>
+  <div class="footer-bg"></div>
+  <div class="footer-overlay"></div>
   <div class="footer-inner">
-    <div class="footer-left">
+    <div>
       <p class="footer-closing">We hope to see you from the altar.</p>
       <p class="footer-tagline">Devin &amp; Victoria · August 4, 2028</p>
     </div>
-    <div class="footer-right">
-      <p class="footer-section-title">Important Addresses</p>
-      <p class="footer-address">Rialto Theater</p>
-      <p class="footer-address-sub">1617 N Franklin St, Tampa, FL 33602</p>
-      <p class="footer-address" style="margin-top:12px;">Hampton Inn &amp; Suites Tampa/Ybor City/Downtown</p>
-      <p class="footer-address-sub">1301 E 7th Ave, Tampa, FL 33605</p>
-      <p class="footer-section-title">Contact</p>
-      <p class="footer-contact">
-        Bride's Number: 973.873.5755<br/>
-        Venue: 813.247.6700<br/>
-        Email: terrywedding828@gmail.com
-      </p>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2028 Devin &amp; Victoria · All our love</div>
-</footer>
-
-</body>
-</html>
+    <div>
+      <p class="footer-col-title">Important Addresses</p>
+      <p class="footer-addr-name">Rialto Theater</p>
+      <p class="footer-addr-sub">1617 N Franklin St, Tampa, FL 33602<br/>813.247.6700</p>
+      <p class="footer-addr-name" style="margin-top:14px;">Hampton Inn &amp; Suites Tampa/Ybor City/Downtown</p>
+      <p class="footer-addr-sub">1301 E 7th Ave, Tampa, FL 33605</p>
+      <p class="footer-col-title">Contact</p>
+      <p class="footer-contact">Bride's Number: 973.873.5755<br/>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b6f7e6969626c7e7f7f72757c2329235b7c767a727735787476">[email&#160;protected]</a></p>
